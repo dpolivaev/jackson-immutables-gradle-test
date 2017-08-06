@@ -1,0 +1,33 @@
+plugins {
+	id "net.ltgt.apt" version "0.11"
+  }
+  
+apply plugin: "net.ltgt.apt-eclipse"
+apply plugin: 'java-library'  
+
+
+eclipse {
+	jdt {
+	  apt {
+		genSrcDir = file('apt_generated')
+	  }
+	}
+  }
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+    // Use jcenter for resolving your dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    jcenter()
+}
+
+dependencies {
+	
+	compileOnly "org.immutables:value:2.2.10:annotations"
+	apt         "org.immutables:value:2.2.10"
+	
+	compile 'com.fasterxml.jackson.core:jackson-databind:2.9.0'
+    testCompile 'junit:junit:4.12'
+	testCompile 'org.assertj:assertj-core:3.8.0'
+}
+
